@@ -97,10 +97,11 @@ def mobileGuard(Arr, p, q):
                 else:
                     # use type p guard
                     c = checkNumber(Arr[:i], 1)
-                    dp[i][j][k] = dp[i-c][j-1][k]
+                    p_bool = dp[i-c][j-1][k]
                     # use type q guard
                     c = checkNumber(Arr[:i], 3)
-                    dp[i][j][k] = dp[i-c][j][k-1]
+                    q_bool = dp[i-c][j][k-1]
+                    dp[i][j][k] = p_bool or q_bool
 
     if dp[n][p][q] == True:
         return 'Yes'
